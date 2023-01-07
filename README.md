@@ -126,4 +126,79 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 
 ```
 
-# NESTED ROUTE - DÙNG ĐỂ 
+# NESTED ROUTE 
+- DÙNG ĐỂ CỐ ĐỊNH CÁC COMPONENT KHÔNG BỊ MẤT KHI NAVIGATE, CHỈ NAVIGATE TỚI COMPONENT CẦN RENDER 
+```JS
+// I. Component Cha Bọc Component Con
+// App.js bọc các thằng con 
+// những thằng con sẽ kế thừa cha 
+// và muốn dùng phải khai báo nơi nào muốn render thằng con 
+<Route path="/" element={ <App /> }>
+    <Route path="users" element={ <User /> }/>
+    <Route path="admins" element={ <Admin /> }/>
+</Route>
+
+// II. Sử Dụng trong Function App.js 
+//  ===> dùng công cụ Outlet 
+// mỗi lần vào đường Link nào thì Component Con Lập tức thay thế vào phần <Outlet />
+
+// nhờ có sự lồng nhau giữa các Route thì mới chia sẻ được những phần dùng chung 
+function App() {
+  return (
+    <div className="app-container">
+      <div className='header-container'>
+        <Header />
+      </div>
+      <div class='main-container'>
+        <div className='sidenav-container'>
+
+        </div>
+        <div className='app-content'>
+          <Outlet/>
+        </div>
+      </div>
+    </div>
+  );
+}
+```
+
+# Active Link Styling
+```js
+- import { NavLink } from "react-router-dom";
+
+// muốn dùng Component NavLink để active phải đổi Hết Link -> NavLink 
+<Link to="/" className='nav-link'>Home</Link>
+<Link to="/users" className='nav-link'>Admin</Link>
+<Link to="/admins" className='nav-link'>Home</Link>
+
+// 
+<NavLink to="/" className='nav-link'>Home</NavLink>
+<NavLink to="/users" className='nav-link'>User</NavLink>
+<NavLink to="/admins" className='nav-link'>Admin</NavLink>
+
+// ghi đè thuộc tính CSS của bootstrap  - đi từ cha đến con 
+.app-container {
+  .header-container {
+
+    // .navbar-nav {
+    //   .nav-link.active {
+    //     color: red
+    //   }
+    // }
+    
+    .navbar-nav {
+      .nav-link {
+        &.active {
+          color: red
+        }
+      }
+    }
+
+
+    // --> scss không làm như này 
+    // .navbar-nav .nav-link.active {
+    //   color: red
+    // }
+  }
+}
+```

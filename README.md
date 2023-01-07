@@ -70,10 +70,60 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
 
 
-# 1. cài thư viện react-router-dom 
+## 1. cài thư viện react-router-dom 
 - npm i react-router-dom
-# 2. React bootstrap 
+## 2. React bootstrap 
 - cài thư viện react-bootstrap  -> npm i react-bootstrap
 - cài bootstrap -> npm i bootstrap
-# 3. link file css
+## 3. link file css
 - import 'bootstrap/dist/css/bootstrap.min.css';
+
+# Design Header vs Bootstrap Navigation
+1. check out new branch 
+
+# Điều hướng trang với LINK 
+- 1. import { BrowserRouter, Route, Routes } from "react-router-dom";   ---> index.js 
+- 2. import { Link } from 'react-router-dom'    ---> App.js 
+
+
+
+# - dùng thư viện Router 
+```js
+// nói cho react router biết mỗi lần người dùng vào link, thì render ra element nào 
+<Routes>
+      <Route path="/" element={ <App /> }/>
+      <Route path="users" element={ <User /> }/>
+      <Route path="admins" element={ <Admin /> }/>
+</Routes>
+```
+
+# - cách dùng thẻ Link
+```js
+// dùng thẻ Link để điều hướng người dùng đến
+// link - '/users' or '/admins' 
+// Còn việc render ra cái gì thì đã được khai báo như block code ở trên 
+// dùng thẻ Link của Thư viện React sẽ không bị load lại trang 
+<button>
+    <Link to="/users" > Go to user page</Link>  
+</button>
+<button>
+    <Link to="/admins" >Go to admin page</Link>
+</button>
+```
+
+# - dùng thẻ <kbd>Link</kbd> sẽ bị mất CSS của bootstrap, do đó làm cách sau
+```js
+
+// bản chất của thẻ Nav.Link trong bootstrap là chèn class = "nav-link"
+<Nav.Link to="/home">Home</Nav.Link>
+<Nav.Link to="/admins">Admin</Nav.Link>
+<Nav.Link to="/users">User</Nav.Link> 
+
+// do đó nếu thay thành thẻ Link của thư viện React thì thêm className="nav-link"
+<Link to="/" className='nav-link'>Home</Link>
+<Link to="/users" className='nav-link'>Admin</Link>
+<Link to="/admins" className='nav-link'>Home</Link>
+
+```
+
+# NESTED ROUTE - DÙNG ĐỂ 

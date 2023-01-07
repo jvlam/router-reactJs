@@ -70,6 +70,8 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
 
 
+
+
 ## 1. cài thư viện react-router-dom 
 - npm i react-router-dom
 ## 2. React bootstrap 
@@ -87,7 +89,7 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 
 
 
-# - dùng thư viện Router 
+# 1. dùng thư viện <kbd>Router</kbd> 
 ```js
 // nói cho react router biết mỗi lần người dùng vào link, thì render ra element nào 
 <Routes>
@@ -97,7 +99,7 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 </Routes>
 ```
 
-# - cách dùng thẻ Link
+# 2. Cách dùng thẻ <kbd>Router</kbd>
 ```js
 // dùng thẻ Link để điều hướng người dùng đến
 // link - '/users' or '/admins' 
@@ -111,7 +113,7 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 </button>
 ```
 
-# - dùng thẻ <kbd>Link</kbd> sẽ bị mất CSS của bootstrap, do đó làm cách sau
+# 3. Dùng thẻ <kbd>Link</kbd> sẽ bị mất CSS của bootstrap, do đó làm cách sau
 ```js
 
 // bản chất của thẻ Nav.Link trong bootstrap là chèn class = "nav-link"
@@ -126,7 +128,7 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 
 ```
 
-# NESTED ROUTE 
+# 4. NESTED ROUTE 
 - DÙNG ĐỂ CỐ ĐỊNH CÁC COMPONENT KHÔNG BỊ MẤT KHI NAVIGATE, CHỈ NAVIGATE TỚI COMPONENT CẦN RENDER 
 ```JS
 // I. Component Cha Bọc Component Con
@@ -162,7 +164,7 @@ function App() {
 }
 ```
 
-# Active Link Styling
+# 5. Active Link Styling
 ```js
 - import { NavLink } from "react-router-dom";
 
@@ -201,4 +203,18 @@ function App() {
     // }
   }
 }
+```
+# 6. Index Routes 
+- khi vào đường link của thằng cha và muốn render ra một cái gì đấy thay vì chống trơn 
+```js
+// trang home vô tình trùng mất với thằng cha  '/'
+// và một Route đặc biệt không chứa path 
+// <Outlet /> sẽ đợi Link navigate để nhận path, nhưng nếu không có path nào match 
+// thì sẽ bê index vào <Outlet />
+// chứa property index để nói cho 
+<Route path="/" element={ <App /> }>
+    <Route index element={ <HomePage/> }/>
+    <Route path="users" element={ <User /> }/>
+    <Route path="admins" element={ <Admin /> }/>
+</Route>
 ```

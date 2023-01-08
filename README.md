@@ -218,3 +218,11 @@ function App() {
     <Route path="admins" element={ <Admin /> }/>
 </Route>
 ```
+
+#  Setup Axios, React Toastify, React Paginate
+- Setup Axios
+  - gọi api 
+- React Toastify
+  - hiển thị thông báo 
+- React Paginate
+  - phân trang ứng dụng 

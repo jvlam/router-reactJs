@@ -13,6 +13,12 @@ import { FaTachometerAlt, FaGem, FaList, FaGithub, FaRegLaughWink, FaHeart } fro
 import sidebarBg from '../../assets/bg2.jpg';
 
 
+import SiReactivex from 'react-icons/md'
+import  { DiReact }  from 'react-icons/di'
+import { MdDashboard } from 'react-icons/md';
+import { Link } from 'react-router-dom';
+
+
 const SideBar = (props) => {
     const { image, collapsed, toggled, handleToggleSidebar } = props;
     return (
@@ -37,6 +43,7 @@ const SideBar = (props) => {
                             whiteSpace: 'nowrap',
                         }}
                     >
+                        <DiReact size={'3em'} color={'00bfff'}/>
                         DASHBOARD
                     </div>
                 </SidebarHeader>
@@ -44,22 +51,34 @@ const SideBar = (props) => {
                 <SidebarContent>
                     <Menu iconShape="circle">
                         <MenuItem
-                            icon={<FaTachometerAlt />}
-                            suffix={<span className="badge red">New</span>}
+                            icon={<MdDashboard />}
+                            // suffix={<span className="badge red">New</span>}
                         >
                             dashboard
+                            <Link to="/admins"/>
                         </MenuItem>
-                        <MenuItem icon={<FaGem />}> components </MenuItem>
                     </Menu>
                     <Menu iconShape="circle">
-                        <SubMenu
-                            suffix={<span className="badge yellow">3</span>}
-                            icon={<FaRegLaughWink />}
-                        >
-                            <MenuItem> 1</MenuItem>
-                            <MenuItem> 2</MenuItem>
-                            <MenuItem> 3</MenuItem>
-                        </SubMenu>
+                        <MenuItem>
+                            <SubMenu
+                                // suffix={<span className="badge yellow">3</span>}
+                                icon={<FaGem />}
+                                title="Features"
+                            >
+                                <MenuItem>
+                                    Users Management
+                                    <Link to="manage-users"/>
+                                </MenuItem>
+                                <MenuItem>
+                                    Quizzes Management
+                                    <Link to=""/>
+                                </MenuItem>
+                                <MenuItem>
+                                    Question Management
+                                    <Link to=""/>
+                                </MenuItem>
+                            </SubMenu>
+                        </MenuItem>
                     </Menu>
                 </SidebarContent>
 

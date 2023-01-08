@@ -1,4 +1,6 @@
 import ModalCreateUser from './ModalCreateuser'
+import './ManageUser.scss'
+
 
 function ManageUser() {
   return (
@@ -11,8 +13,8 @@ function ManageUser() {
           <button>Add new users</button>
         </div>
         <div>
-          <ModalCreateUser />
         </div>
+        <ModalCreateUser />
       </div>
     </div>
   )

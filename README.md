@@ -226,3 +226,6 @@ function App() {
   - hiển thị thông báo 
 - React Paginate
   - phân trang ứng dụng 
+
+## lưu ý CSS cho modal Bootstrap
+- lý do modal nằm ngoài root 

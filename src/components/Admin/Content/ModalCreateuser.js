@@ -1,47 +1,84 @@
 import React, { useEffect, useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
+import axios from 'axios';
 
-function ModalCreateUser() {
-    const [show, setShow] = useState(false);
+function ModalCreateUser(props) {
+
+    const { modal } = props
+
+    // const [show, setShow] = useState(false);
+
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [userName, setUserName] = useState('');
     const [role, setRole] = useState('USER');
-    // const [image, setImage] = useState()
     const [avatar, setAvatar] = useState()
 
-    const handleShow = () => setShow(true);
-    const handleSubmit = () => setShow(false);
-    const handleClose = () => setShow(false);
-
-
-    const handleUploadImage = (e) => {
-        if(e.target && e.target.files && e.target.files[0]) {
-            const file = e.target.files[0] // return a object of filelist
-            file.preview = URL.createObjectURL(file) // return url 
-            setAvatar(file)
-            // setImage(e.target.files[0])
-        }else {
-            // setPreviewImage('')
-        }
-    }
-
     useEffect(() => {
-        
+
         return () => {
             avatar && URL.revokeObjectURL(avatar.preview)
         }
     }, [avatar])
 
+    // const handleShow = () => setShow(true);
+    const handleSubmit = () => modal.setShow(false);
+    const handleClose = () => {
+        modal.setShow(false)
+        setEmail('')
+        setPassword('')
+        setUserName('')
+        setRole('')
+        setAvatar('')
+    };
+
+    const handleUploadImage = (e) => {
+        if (e.target && e.target.files && e.target.files[0]) {
+            const file = e.target.files[0] // return a object of filelist
+            file.preview = URL.createObjectURL(file) // return url 
+            setAvatar(file)
+            // setImage(e.target.files[0])
+        } else {
+            // setPreviewImage('')
+        }
+    }
+
+    const handleSubmitCreateUser =  async() => {
+        // Validate
+
+        // call apis
+        // let data = {
+        //     email: email,
+        //     password: password,
+        //     username: userName,
+        //     role: role,
+        //     userImage: avatar
+        // }
+
+        const FormData = require('form-data');
+
+        const param = new FormData();
+        param.append('email', email);
+        param.append('password', password);
+        param.append('username', userName);
+        param.append('role', role);
+        param.append('userImage', avatar);
+
+        let res = await axios.post('http://localhost:8081/api/v1/participant', param)
+
+        alert(JSON.stringify(res))
+    }
+
+
     return (
         <>
-            <Button variant="primary" onClick={handleShow}>
+            {/* <Button variant="primary" onClick={handleShow}>
                 Launch demo modal
-            </Button>
+            </Button> */}
 
             <Modal
-                show={show}
+                show={modal.show}
                 onHide={handleClose}
                 size="lg"
                 backdrop='static'
@@ -86,7 +123,7 @@ function ModalCreateUser() {
                             <select className="form-select"
                                 onChange={(e) => setRole(e.target.value)}
                             >
-                                <option selected value="USER">User</option>
+                                <option defaultValue={role} >User</option>
                                 <option value="ADMIN">Admin</option>
                             </select>
                         </div>
@@ -110,11 +147,13 @@ function ModalCreateUser() {
                     </form>
                 </Modal.Body>
                 <Modal.Footer>
+                    <Button variant="primary" onClick={() => {
+                        handleSubmitCreateUser()
+                    }}>
+                        Add
+                    </Button>
                     <Button variant="secondary" onClick={handleClose}>
                         Close
-                    </Button>
-                    <Button variant="primary" onClick={handleSubmit}>
-                        Add
                     </Button>
                 </Modal.Footer>
             </Modal>

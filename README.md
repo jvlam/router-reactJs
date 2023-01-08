@@ -229,3 +229,7 @@ function App() {
 
 ## lưu ý CSS cho modal Bootstrap
 - lý do modal nằm ngoài root 
+
+
+## function dùng gọi api việc thao tác với database tốn thời gian 
+- do đó dùng async 

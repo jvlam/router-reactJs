@@ -219,7 +219,7 @@ function App() {
 </Route>
 ```
 
-#  Setup Axios, React Toastify, React Paginate
+# 55. Setup Axios, React Toastify, React Paginate
 - Setup Axios
   - gọi api 
 - React Toastify
@@ -233,3 +233,4 @@ function App() {
 
 ## function dùng gọi api việc thao tác với database tốn thời gian 
 - do đó dùng async 
+

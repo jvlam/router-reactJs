@@ -1,0 +1,44 @@
+.Blog-wrapper {
+    .blog-content {
+        width: 1140px;
+        margin: 0 auto;
+
+        .slider {
+            border: 1px solid red;
+
+        }
+        
+        .blog-body {
+            display: flex;
+            // border: 1px solid red;
+            
+        }
+
+        .major-list {
+            width: 30%;
+            // border: 1px solid green;
+        }
+
+        .blog-list {
+            flex: 1;
+            // border: 1px solid green;
+    
+            .blog-item {
+
+                display: flex;
+                align-items: center;
+                gap: 10px;
+
+                .blog-image {
+                    width: 260px;
+                    height: 173px;
+                    object-fit: cover;
+                }
+
+                .bolg-item-title {
+                    font-size: 22px;
+                }
+            }
+        }
+    }
+}

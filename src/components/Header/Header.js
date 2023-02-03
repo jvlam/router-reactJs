@@ -19,12 +19,6 @@ function Header() {
                     <Nav>
                         <button className='btn-login'>Log in</button>
                         <button className='btn-signup'>Sign up</button>
-                        {/* <NavDropdown title="Setting" id="basic-nav-dropdown">
-                            <NavDropdown.Item href="#action/3.1">Log In</NavDropdown.Item>
-                            <NavDropdown.Item href="#action/3.2">Log Out</NavDropdown.Item>
-                            <NavDropdown.Divider />
-                            <NavDropdown.Item href="#action/3.4">Update Profile</NavDropdown.Item>
-                        </NavDropdown> */}
                     </Nav>
                 </Navbar.Collapse>
             </Container>

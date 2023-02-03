@@ -12,6 +12,11 @@ import Admin from './components/Admin/Admin'
 import HomePage from "./components/Home/HomePage";
 import ManageUser from "./components/Admin/Content/ManageUser";
 import DashBoard from "./components/Admin/Content/DashBoard";
+import Login from "./components/Login/Login";
+import Register from "./components/Register/Register";
+import ForgotPassword from "./components/ForgotPassword/ForgotPassword";
+import Navbar from "./components/Blog/Navbar";
+import Blog from "./components/Blog/Blog";
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -20,9 +25,17 @@ root.render(
     <BrowserRouter>
       <Routes>
         <Route path="/" element={ <App/> }>
-          <Route index element={ <HomePage/>} />
-          <Route path="users" element={ <User/>}/>
+          {/* <Route path="users" element={ <User/>}/> */}
+          <Route path="blogs" element={ <Blog/>}/>
         </Route>
+
+
+
+        <Route path="/login" element={ <Login/>}/>
+        <Route path="/register" element={ <Register/>}/>
+        <Route path="/forgot-password" element={ <ForgotPassword/>}/>
+        <Route path="/navbar" element={ <Navbar/>}/>
+
         <Route path="admins" element={ <Admin />}>
           <Route index element={ <DashBoard />}/>
           <Route path="manage-users" element={ <ManageUser/>}/>

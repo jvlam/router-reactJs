@@ -5,7 +5,8 @@
 
         .slider {
             border: 1px solid red;
-
+            margin-top: 20px;
+            height: 200px;
         }
         
         .blog-body {
@@ -17,11 +18,43 @@
         .major-list {
             width: 30%;
             // border: 1px solid green;
+            .list {
+                margin-top: 20px;
+                transition: tranform linear .2s;
+
+                .item {
+                    list-style-type: none;
+                    
+                    a {
+                        text-decoration: none;
+                        color: #0066a6;
+                        font-weight: 500;
+                        position: relative;
+                        right: 0;
+                        padding: 15px;
+
+                        &:hover {
+                            right: -10px;
+                            transition: right linear .1s;
+                            color: #b98d55;
+                        }
+                    }
+
+                    .line {
+                        border-bottom: 1px solid #ccc;
+                        width: 60%;
+                        margin: 10px 0;
+                    }
+
+                    
+                }
+            }
         }
 
         .blog-list {
             flex: 1;
             // border: 1px solid green;
+            margin-top: 20px;
     
             .blog-item {
 
@@ -33,12 +66,19 @@
                     width: 260px;
                     height: 173px;
                     object-fit: cover;
+                    cursor: pointer;
                 }
 
                 .bolg-item-title {
                     font-size: 22px;
                 }
             }
+        }
+
+        .paginate {
+            text-align: center;
+            margin-top: 20px;
+            border: 1px solid red;
         }
     }
 }
